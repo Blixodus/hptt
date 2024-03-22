@@ -1,4 +1,3 @@
-
 cmake_minimum_required(VERSION 3.7 FATAL_ERROR)
 project (HPTT C CXX)
 
@@ -38,14 +37,19 @@ endif()
 set(HPTT_SRCS src/hptt.cpp src/plan.cpp src/transpose.cpp src/utils.cpp)
 
 add_library(hptt STATIC ${HPTT_SRCS})
-target_compile_features(hptt PUBLIC cxx_std_11)
-target_include_directories(hptt PUBLIC ${PROJECT_SOURCE_DIR}/include)
-#target_compile_definitions(hptt PRIVATE ${HPTT_CXX_COMPILE_DEFS})
 target_compile_options(hptt PUBLIC ${HPTT_CXX_FLAGS})
+target_compile_features(hptt PUBLIC cxx_std_11)
+
+target_include_directories(hptt PUBLIC
+  $<BUILD_INTERFACE:${PROJECT_SOURCE_DIR}/include>
+  $<INSTALL_INTERFACE:${CMAKE_INSTALL_PREFIX}/include/hptt>
+)
 
 install(TARGETS hptt
         LIBRARY DESTINATION ${CMAKE_INSTALL_PREFIX}/lib
-        ARCHIVE DESTINATION ${CMAKE_INSTALL_PREFIX}/lib)
+        ARCHIVE DESTINATION ${CMAKE_INSTALL_PREFIX}/lib
+        INCLUDES DESTINATION ${CMAKE_INSTALL_PREFIX}/include/hptt 
+        )
 
 set(HPTT_INCLUDES 
     include/compute_node.h 
@@ -57,4 +61,4 @@ set(HPTT_INCLUDES
     include/transpose.h)
 
 install(FILES ${HPTT_INCLUDES}
-        DESTINATION ${CMAKE_INSTALL_PREFIX}/include)
+        DESTINATION ${CMAKE_INSTALL_PREFIX}/include/hptt)

@@ -17,3 +17,5 @@ old/
 **/*\.egg-info/
 **/hptt\.cfg
 
+.cache
+build
