@@ -5,11 +5,7 @@ HPTT is a high-performance C++ library for out-of-place tensor transpositions of
 ![hptt](https://github.com/springer13/hptt/blob/master/misc/equation.png)
 
 where A and B respectively denote the input and output tensor;
-<img src=https://github.com/springer13/hptt/blob/master/misc/pi.png height=16px/> represents the user-specified
-transposition, and 
-<img src=https://github.com/springer13/hptt/blob/master/misc/alpha.png height=14px/> and
-<img src=https://github.com/springer13/hptt/blob/master/misc/beta.png height=16px/> being scalars
-(i.e., setting <img src=https://github.com/springer13/hptt/blob/master/misc/beta.png height=16px/> != 0 enables the user to update the output tensor B).
+&Pi; represents the user-specified transposition, and &alpha; and &beta; being scalars (i.e., setting &beta; != 0 enables the user to update the output tensor B).
 
 # Key Features
 
@@ -49,6 +45,7 @@ Now you have several options to build the desired version of the library:
     make scalar
 
 Using CMake:
+
     mkdir build && cd build
     cmake .. -DCMAKE_C_COMPILER=gcc -DCMAKE_CXX_COMPILER=g++
     #Optionally one of [-DENABLE_ARM=ON -DENABLE_AVX=ON -DENABLE_IBM=ON]    
