@@ -42,13 +42,13 @@ target_compile_features(hptt PUBLIC cxx_std_11)
 
 target_include_directories(hptt PUBLIC
   $<BUILD_INTERFACE:${PROJECT_SOURCE_DIR}/include>
-  $<INSTALL_INTERFACE:${CMAKE_INSTALL_PREFIX}/include/hptt>
+  $<INSTALL_INTERFACE:${CMAKE_INSTALL_PREFIX}/include>
 )
 
 install(TARGETS hptt
         LIBRARY DESTINATION ${CMAKE_INSTALL_PREFIX}/lib
         ARCHIVE DESTINATION ${CMAKE_INSTALL_PREFIX}/lib
-        INCLUDES DESTINATION ${CMAKE_INSTALL_PREFIX}/include/hptt 
+        INCLUDES DESTINATION ${CMAKE_INSTALL_PREFIX}/include 
         )
 
 set(HPTT_INCLUDES 
@@ -61,4 +61,4 @@ set(HPTT_INCLUDES
     include/transpose.h)
 
 install(FILES ${HPTT_INCLUDES}
-        DESTINATION ${CMAKE_INSTALL_PREFIX}/include/hptt)
+        DESTINATION ${CMAKE_INSTALL_PREFIX}/include)
