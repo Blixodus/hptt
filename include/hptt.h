@@ -301,9 +301,11 @@ void dTensorTranspose( const int *perm, const int dim,
                  const double beta,        double *B,                   const int *outerSizeB, 
                  const int numThreads, const int useRowMajor = 0);
 
-// Avoid warning from clang for _Complex
+	// Avoid warning from clang for _Complex
+#ifdef __clang__
 #pragma clang diagnostic push
 #pragma clang diagnostic ignored "-Wc99-extensions"
+#endif
 void cTensorTranspose( const int *perm, const int dim,
                  const float _Complex alpha, bool conjA, const float _Complex *A, const int *sizeA, const int *outerSizeA, 
                  const float _Complex beta,                    float _Complex *B,                   const int *outerSizeB, 
@@ -313,5 +315,7 @@ void zTensorTranspose( const int *perm, const int dim,
                  const double _Complex alpha, bool conjA, const double _Complex *A, const int *sizeA, const int *outerSizeA, 
                  const double _Complex beta,                    double _Complex *B,                   const int *outerSizeB, 
                  const int numThreads, const int useRowMajor = 0);
+#ifdef __clang__
 #pragma clang diagnostic pop
+#endif
 }
